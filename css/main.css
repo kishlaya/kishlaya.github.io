@@ -144,7 +144,6 @@ a:visited {
     color: #00bfff; }
 
 li[role='details'] > a::after {
-  content: 'Hello';
   position: relative;
   top: 0;
   left: 0; }
