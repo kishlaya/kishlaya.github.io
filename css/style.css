@@ -1,0 +1,197 @@
+body {
+  font-family: "Open Sans", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
+  color: #b3b3b3;
+  background: #fff;
+}
+
+a {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5 {
+  color: #000;
+  font-family: "Playfair Display", times, serif;
+}
+
+::selection {
+  color: black;
+  background-color: pink;
+}
+
+.site-wrap {
+  -webkit-transition: .3s all ease;
+  -o-transition: .3s all ease;
+  transition: .3s all ease;
+}
+
+body.offcanvas-open {
+  position: relative;
+  overflow: hidden;
+}
+
+body.offcanvas-open .site-wrap {
+  -webkit-transform: translateX(-240px);
+  -ms-transform: translateX(-240px);
+  transform: translateX(-240px);
+}
+
+.offcanvas-toggle {
+  position: fixed;
+  z-index: 89;
+  right: 20px;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  font-size: 13px;
+  top: 20px;
+  color: #000;
+}
+
+.offcanvas-toggle:hover {
+  color: #000;
+  opacity: .7;
+}
+
+.offcanvas-toggle.light {
+  color: #fff;
+}
+
+.offcanvas-toggle.light:hover {
+  color: #fff;
+  opacity: .7;
+}
+
+.offcanvas_menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  margin-right: -240px;
+  overflow: scroll;
+  z-index: 100;
+  width: 240px;
+  background: #283149;
+  padding: 20px 30px;
+}
+
+.offcanvas_menu ul {
+  margin: 0;
+  padding: 0;
+}
+
+.offcanvas_menu ul li {
+  margin: 0 0 10px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.offcanvas_menu ul li a {
+  color: #fff;
+  font-size: 18px;
+}
+
+.offcanvas_menu ul li a:hover {
+  opacity: .5;
+}
+
+.offcanvas_menu ul li.active a {
+  color: #F73859;
+}
+
+.offcanvas_menu ul.social li {
+  display: inline-block;
+}
+
+.offcanvas_menu ul.social li a {
+  color: #fff;
+  font-size: 20px;
+  padding: 5px 10px;
+}
+
+.offcanvas_menu ul.social li a:hover {
+  opacity: .5;
+}
+
+.offcanvas_menu ul.social li:first-child a {
+  padding-left: 0;
+}
+
+main, aside {
+  width: 100%;
+}
+
+@media (min-width: 576px) {
+  main, aside {
+    width: 50%;
+  }
+}
+
+aside {
+  background-position: center center;
+  background-size: cover;
+  height: 400px;
+  position: relative;
+}
+
+@media (min-width: 576px) {
+  aside {
+    height: 100vh;
+    position: fixed;
+    right: 0;
+    top: 0;
+  }
+}
+
+main {
+  float: left;
+  padding: 7%;
+  position: relative;
+}
+
+section {
+  display: none;
+}
+
+.home-button {
+  top: 20px;
+  color: #F73859;
+  font-size: 20px;
+  position: absolute;
+}
+
+@media (min-width: 576px) {
+  .home-button {
+    display: block;
+  }
+}
+
+.resume-list {
+  padding: 0;
+  margin: 0;
+}
+
+.resume-list li {
+  padding: 0;
+  margin: 0 0 30px 0;
+  display: block;
+  list-style: none;
+}
+
+.resume-list li .date {
+  color: #000;
+  opacity: .6;
+}
+
+.resume-list li h3 {
+  color: #000;
+  font-size: 24px;
+}
