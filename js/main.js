@@ -27,16 +27,16 @@ function initPage() {
   reset(hash);
 }
 
-function reset(section) {
-  navClose();
+// function reset(section) {
+//   navClose();
 
-  for (i of document.querySelectorAll('#offcanvas_menu li')) {
-    i.classList.remove("active");
-  }
-  document.querySelector('li[data-section=' + section + ']').classList.add("active");
+//   for (i of document.querySelectorAll('#offcanvas_menu li')) {
+//     i.classList.remove("active");
+//   }
+//   document.querySelector('li[data-section=' + section + ']').classList.add("active");
 
-  document.getElementById('content').innerHTML = document.getElementById(section).innerHTML;
-}
+//   document.getElementById('content').innerHTML = document.getElementById(section).innerHTML;
+// }
 
 function navClose() {
   document.body.classList.remove('offcanvas-open');
@@ -73,4 +73,26 @@ window.onload = function() {
 
   // Load contents of page based on hash in url
   initPage();
+}
+
+/**
+  * @param {String} url - address for the HTML to fetch
+  * @return {String} the resulting HTML string fragment
+  */
+
+async function fetchHtmlAsText(url) {
+  return await (await fetch(url)).text();
+}
+
+async function reset(section) {
+  navClose();
+
+  for (i of document.querySelectorAll('#offcanvas_menu li')) {
+    i.classList.remove("active");
+  }
+  document.querySelector('li[data-section=' + section + ']').classList.add("active");
+  
+  var pageURL = "pages/" + section + ".html";
+  const contentDiv = document.getElementById("content");
+  contentDiv.innerHTML = await fetchHtmlAsText(pageURL);
 }
