@@ -1,3 +1,5 @@
+var sections_list;
+
 function populateNav() {
   var x = []
   var nav = document.querySelector('#offcanvas_menu ul');
@@ -11,8 +13,6 @@ function populateNav() {
   }
   return x;
 }
-
-var sections_list = populateNav();
 
 function initPage() {
   var hash = "";
@@ -38,13 +38,6 @@ function reset(section) {
   document.getElementById('content').innerHTML = document.getElementById(section).innerHTML;
 }
 
-for (i of document.querySelectorAll('#offcanvas_menu li a')) {
-  i.onclick = function() {
-    x = this.parentElement.getAttribute('data-section');
-    reset(x);
-  };
-}
-
 function navClose() {
   document.body.classList.remove('offcanvas-open');
 }
@@ -58,12 +51,26 @@ function navToggle() {
   }
 }
 
-document.querySelector('.js-offcanvas-toggle').onclick = function() { navToggle(); }
+window.onload = function() {
+  // populate navbar
+  sections_list = populateNav();
+  
+  // Attach onclick handler for navbar elements
+  for (i of document.querySelectorAll('#offcanvas_menu li a')) {
+    i.onclick = function() {
+      x = this.parentElement.getAttribute('data-section');
+      reset(x);
+    };
+  }
 
-for (i of document.querySelectorAll('#content, aside')) {
-  i.onclick = function() { navClose(); };
-}
+  // Toggle navbar with Menu button
+  // document.querySelector('.js-offcanvas-toggle').onclick = function() { navToggle(); }
 
-document.body.onload = function() {
+  // Close navbar when clicked in open space
+  for (i of document.querySelectorAll('#content, aside')) {
+    i.onclick = function() { navClose(); };
+  }
+
+  // Load contents of page based on hash in url
   initPage();
 }
