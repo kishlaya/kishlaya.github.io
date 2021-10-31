@@ -32,19 +32,22 @@ async function fetchHtmlAsText(url) {
 }
 
 async function reset(page) {
-  // Load page first
-  var pageURL = "pages/" + page + ".html";
-  const contentDiv = document.getElementById("content");
-  contentDiv.innerHTML = await fetchHtmlAsText(pageURL);
-
-  // Close the navbar
-  navClose();
+  // Clear content
+  contentDiv.innerHTML = "...";
 
   // Change styling of navbar
   for (i of document.querySelectorAll('#offcanvas_menu li')) {
     i.classList.remove("active");
   }
   document.querySelector('li[data-page=' + page + ']').classList.add("active");
+
+  // Close the navbar
+  navClose();
+
+  // Load page
+  var pageURL = "pages/" + page + ".html";
+  const contentDiv = document.getElementById("content");
+  contentDiv.innerHTML = await fetchHtmlAsText(pageURL);
 }
 
 function navClose() {
