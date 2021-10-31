@@ -1,17 +1,12 @@
-var sections_list;
+const sections_list = ["bio", "projects", "resume", "todo", "quotes"];
 
 function populateNav() {
   var x = []
   var nav = document.querySelector('#offcanvas_menu ul');
-  for (i of document.querySelectorAll('section')) {
-    sectionID = i.id;
-    
+  for (sectionID of sections_list) {    
     nav_entry = "<li data-section='" + sectionID + "'><a href='#" + sectionID + "'>" + sectionID + "</a></li>";
     nav.innerHTML += nav_entry;
-
-    x.push(sectionID);
   }
-  return x;
 }
 
 function initPage() {
@@ -64,7 +59,7 @@ function navToggle() {
 
 window.onload = function() {
   // populate navbar
-  sections_list = populateNav();
+  populateNav();
   
   // Attach onclick handler for navbar elements
   for (i of document.querySelectorAll('#offcanvas_menu li a')) {
