@@ -1,10 +1,10 @@
-const sections_list = ["bio", "projects", "resume", "todo", "quotes"];
+const page_list = ["bio", "projects", "resume", "todo", "quotes"];
 
 function populateNav() {
   var x = []
   var nav = document.querySelector('#offcanvas_menu ul');
-  for (sectionID of sections_list) {    
-    nav_entry = "<li data-section='" + sectionID + "'><a href='#" + sectionID + "'>" + sectionID + "</a></li>";
+  for (page of page_list) {    
+    nav_entry = "<li data-page='" + page + "'><a href='#" + page + "'>" + page + "</a></li>";
     nav.innerHTML += nav_entry;
   }
 }
@@ -13,7 +13,7 @@ function initPage() {
   var hash = "";
   if (window.location.hash) {
     hash = window.location.hash.substring(1);
-    if (sections_list.indexOf(hash) == -1) {
+    if (page_list.indexOf(hash) == -1) {
       hash = "bio";
     }
   } else {
@@ -31,15 +31,15 @@ async function fetchHtmlAsText(url) {
   return await (await fetch(url)).text();
 }
 
-async function reset(section) {
+async function reset(page) {
   navClose();
 
   for (i of document.querySelectorAll('#offcanvas_menu li')) {
     i.classList.remove("active");
   }
-  document.querySelector('li[data-section=' + section + ']').classList.add("active");
+  document.querySelector('li[data-page=' + page + ']').classList.add("active");
   
-  var pageURL = "pages/" + section + ".html";
+  var pageURL = "pages/" + page + ".html";
   const contentDiv = document.getElementById("content");
   contentDiv.innerHTML = await fetchHtmlAsText(pageURL);
 }
@@ -64,7 +64,7 @@ window.onload = function() {
   // Attach onclick handler for navbar elements
   for (i of document.querySelectorAll('#offcanvas_menu li a')) {
     i.onclick = function() {
-      x = this.parentElement.getAttribute('data-section');
+      x = this.parentElement.getAttribute('data-page');
       reset(x);
     };
   }

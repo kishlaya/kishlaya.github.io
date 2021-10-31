@@ -170,10 +170,6 @@ main {
   position: relative;
 }
 
-section {
-  display: none;
-}
-
 .home-button {
   top: 20px;
   color: #F73859;
