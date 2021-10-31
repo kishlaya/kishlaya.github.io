@@ -33,6 +33,7 @@ async function fetchHtmlAsText(url) {
 
 async function reset(page) {
   // Clear content
+  const contentDiv = document.getElementById("content");
   contentDiv.innerHTML = "...";
 
   // Change styling of navbar
@@ -46,7 +47,6 @@ async function reset(page) {
 
   // Load page
   var pageURL = "pages/" + page + ".html";
-  const contentDiv = document.getElementById("content");
   contentDiv.innerHTML = await fetchHtmlAsText(pageURL);
 }
 
