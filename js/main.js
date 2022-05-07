@@ -1,4 +1,4 @@
-const page_list = ["bio", "projects", "resume", "todo", "quotes"];
+const page_list = ["bio", "projects", "resume", "quotes"];
 
 function populateNav() {
   var x = []
